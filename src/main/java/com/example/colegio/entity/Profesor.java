@@ -36,13 +36,25 @@ public class Profesor implements Serializable {
 	private String nombre;
 	
 	@Column(name="apellido")
-	private Integer apellido;
+	private String apellido;
 	
 	@Column(name="contrasena")
-	private Integer contrasena;
+	private String contrasena;
+	
+	@Column(name="telefono")
+	private String telefono;
 	
 	@OneToMany(mappedBy ="profesorIdprofesor")
 	private List<Curso>cursolist;
+
+	
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 
 	public Integer getIdProfesor() {
 		return idProfesor;
@@ -68,19 +80,19 @@ public class Profesor implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Integer getApellido() {
+	public String getApellido() {
 		return apellido;
 	}
 
-	public void setApellido(Integer apellido) {
+	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
-	public Integer getContrasena() {
+	public String getContrasena() {
 		return contrasena;
 	}
 
-	public void setContrasena(Integer contrasena) {
+	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 

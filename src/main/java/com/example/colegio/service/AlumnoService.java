@@ -58,7 +58,7 @@ notaRepository.saveAll(notas);
 	}
 	
 	@GetMapping(path="/buscar/por/{nombre}/{contrasena}")
-	public List<Alumno>buscarPorNombreYContrasena(@PathVariable String nombre, String contrasena){
+	public List<Alumno>buscarPorNombreYContrasena(@PathVariable String nombre,@PathVariable String contrasena){
 		return alumnoRepository.findByNombreAndContrasena(nombre, contrasena);
 	}
 	

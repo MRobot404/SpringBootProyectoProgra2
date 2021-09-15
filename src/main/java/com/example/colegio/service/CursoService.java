@@ -13,12 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.colegio.entity.Alumno;
+
 import com.example.colegio.entity.Curso;
-import com.example.colegio.entity.Nota;
-import com.example.colegio.repository.AlumnoRepository;
 import com.example.colegio.repository.CursoRepository;
-import com.example.colegio.repository.NotaRepository;
 import com.example.colegio.repository.ProfesorRepository;
 
 @RestController
