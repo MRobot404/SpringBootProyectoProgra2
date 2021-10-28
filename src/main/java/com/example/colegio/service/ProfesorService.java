@@ -53,19 +53,31 @@ public class ProfesorService {
 	public void eliminar(@PathVariable ("idprofesor") Integer idprofesor) {
 		Optional <Profesor> profesor = profesorRepository.findById(idprofesor);
 		if(profesor.isPresent()) {
+			cursoRepository.deleteAll(profesor.get().getCursolist());
 			profesorRepository.delete(profesor.get());
 		}
 	
 }
 	
-	@GetMapping(path="/buscar/por/{usuario}/{contrasena}")
-	public List<Profesor> buscarPorUsuarioYContrasena(@PathVariable String usuario,@PathVariable String contrasena){
-		return profesorRepository.findByUsuarioAndContrasena(usuario, contrasena);
+	@GetMapping(path="/buscar/porr/{idprofesor}")
+	public Profesor buscarDI(@PathVariable Integer idprofesor){
+		Optional<Profesor>temp= profesorRepository.findById(idprofesor);
+		if(temp.isPresent()) {
+			return temp.get();
+			
+		}
+		return null;
+	}
+	
+	@GetMapping(path="/buscar/por/{nombre}/{apellido}")
+	public List<Profesor>buscarPorNombreYApellido(@PathVariable String nombre,@PathVariable String apellido){
+		return profesorRepository.findByNombreAndApellido(nombre, apellido);
 	}
 	
 	@PostMapping(path="/login")
 	public List<Profesor> login(@RequestBody Profesor profesor){
-		return profesorRepository.findByUsuarioAndContrasena(profesor.getUsuario(), profesor.getContrasena());
-	}
+	 return profesorRepository.findByUsuarioAndContrasena(profesor.getUsuario(),profesor.getContrasena());
+	
+	}	
 	
 }

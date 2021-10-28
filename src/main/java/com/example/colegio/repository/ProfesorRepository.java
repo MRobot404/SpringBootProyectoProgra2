@@ -11,5 +11,6 @@ import com.example.colegio.entity.Profesor;
 
 @Repository("profesorRepository")
 public interface ProfesorRepository extends JpaRepository<Profesor, Serializable> {
-	public List<Profesor> findByUsuarioAndContrasena(String ususario, String contrasena);
+	public List<Profesor> findByUsuarioAndContrasena(String usuario, String contrasena);
+	public List<Profesor> findByNombreAndApellido(String nombre, String apellido);
 }

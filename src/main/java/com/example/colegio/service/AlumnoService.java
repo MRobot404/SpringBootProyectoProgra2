@@ -18,6 +18,7 @@ import com.example.colegio.entity.Nota;
 import com.example.colegio.repository.AlumnoRepository;
 import com.example.colegio.repository.NotaRepository;
 
+
 @RestController
 @RequestMapping("/alumno")
 @CrossOrigin
@@ -57,14 +58,14 @@ notaRepository.saveAll(notas);
 		}
 	}
 	
-	@GetMapping(path="/buscar/por/{nombre}/{contrasena}")
-	public List<Alumno>buscarPorNombreYContrasena(@PathVariable String nombre,@PathVariable String contrasena){
-		return alumnoRepository.findByNombreAndContrasena(nombre, contrasena);
+	@GetMapping(path="/buscar/por/{carne}")
+	public List<Alumno>buscarPorCarne(@PathVariable String carne){
+		return alumnoRepository.findByCarne(carne);
 	}
 	
 	@PostMapping(path="/login")
-	public List<Alumno>login(@RequestBody Alumno alumno){
-		return alumnoRepository.findByNombreAndContrasena(alumno.getNombre(), alumno.getContrasena());
+	public List<Alumno> login(@RequestBody Alumno alumno){
+		return alumnoRepository.findByCarneAndContrasena(alumno.getCarne(), alumno.getContrasena());
 	}
 	
 }

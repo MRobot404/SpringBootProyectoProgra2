@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.colegio.entity.Nota;
+import com.example.colegio.entity.Profesor;
 import com.example.colegio.repository.NotaRepository;
 @RestController
 @RequestMapping("/nota")
@@ -32,7 +33,7 @@ public class NotaService {
 	public Nota saveNota(@RequestBody Nota nota) {
 		return notaRepository.save(nota);
 	}
-	
+
 	@DeleteMapping(path="/eliminar/{idnota}")
 	public void eliminar(@PathVariable ("idnota") Integer idnota) {
 		Optional <Nota> nota =  notaRepository.findById(idnota);
@@ -40,4 +41,16 @@ public class NotaService {
 			notaRepository.delete(nota.get());
 		}
 	}
+	
+	@GetMapping(path="/buscar/por/{alumnoIdalumno}")
+	public List<Nota> buscarIdalumno(@PathVariable Integer alumnoIdalumno){
+		return notaRepository.findByalumnoIdalumno(alumnoIdalumno);
+	}
+	
+	@GetMapping(path="/buscar/by/{cursoIdcurso}")
+	public List<Nota> buscarcursoIdcurso(@PathVariable Integer cursoIdcurso){
+		return notaRepository.findBycursoIdcurso(cursoIdcurso);
+	}
+	
+	
 }
